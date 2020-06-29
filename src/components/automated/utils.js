@@ -82,12 +82,12 @@ export const postSavedDataToServer = function(chain, deletedUrls) {
         error:"",// error message if exists
       }
   */
-  // const payload = { chain: chain, deletedUrls: deletedUrls };
+  const payload = { chain: chain, deletedUrls: deletedUrls };
   let saveFormData = new FormData();
   saveFormData.append("router", 'save_dialog');
   saveFormData.append("session_id", localStorage.getItem('session_id'));
   saveFormData.append("number_id", 1);//for test
-  saveFormData.append("chain", { chain: chain, deletedUrls: deletedUrls });
+  saveFormData.append("chain", JSON.stringify(payload) ); // Convert object to a JSON string
   return axios
     .post(saveApiUrl, saveFormData) 
     .then((response) => {
