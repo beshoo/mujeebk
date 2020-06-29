@@ -1,7 +1,7 @@
 import axios from "axios";
 const baseUrl = "https://mujeebk.com/api/";
 const checkApiUrl = baseUrl + "web_api.php";
-const saveApiUrl = baseUrl + "save/";
+const saveApiUrl = baseUrl + "web_api.php";
 
 export const generateId = function() {
   // Math.random should be unique because of its seeding algorithm.
@@ -82,12 +82,13 @@ export const postSavedDataToServer = function(chain, deletedUrls) {
         error:"",// error message if exists
       }
   */
-  // const payload = { chain: chain, deletedUrls: deletedUrls };
+  const payload = { chain: chain, deletedUrls: deletedUrls };
   let saveFormData = new FormData();
-  saveFormData.append("router", 'save_dialog');
+  saveFormData.append("router", 'save_chain');
   saveFormData.append("session_id", localStorage.getItem('session_id'));
   saveFormData.append("number_id", 1);//for test
-  saveFormData.append("chain", { chain: chain, deletedUrls: deletedUrls });
+  saveFormData.append("chain_id", 1); // Each chain has an id which will be created once user create a scenario
+  saveFormData.append("chain", JSON.stringify(payload));
   return axios
     .post(saveApiUrl, saveFormData) 
     .then((response) => {
