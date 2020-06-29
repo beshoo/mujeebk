@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css"
+    />
+    <script src="/socket.io/socket.io.js"></script>
+    <style>
+      #app {
+        display: none;
+      }
+      .logo_img {
+        filter: grayscale(100%);
+        animation: loader 4s alternate-reverse infinite;
+      }
+      @keyframes loader {
+        0% {
+          filter: grayscale(100%);
+        }
+        25% {
+          filter: grayscale(0%);
+        }
+        50% {
+          filter: grayscale(100%);
+        }
+        100% {
+          filter: grayscale(0%);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>
+      <strong
+        >We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work
+        properly without JavaScript enabled. Please enable it to
+        continue.</strong
+      >
+    </noscript>
+    <div id="app"></div>
+    <div
+      id="loading"
+      style="
+    height: 100vh;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    top: 0;
+    background-color: #FFF;
+"
+    >
+      <img
+        src="./big_logo.png"
+        style="
+    position: absolute;
+    left: 34%;
+    top: 44%;
+"
+        class="logo_img"
+      />
+    </div>
+    <!-- built files will be auto injected -->
+    <script
+      src="https://www.google.com/recaptcha/api.js?render=explicit"
+      async
+      defer
+    >
+    window.onload(() => {
+      console.log('test');
+      
+    })
+  </script>
+  </body>
+</html>
