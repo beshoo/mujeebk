@@ -119,7 +119,7 @@ export default {
     },
     title() {
       if (!this.isOptionSelected) return "Select dialog type";
-      return this.selectedOption.title || this.selectedOption.text;
+      return  this.selectedOption.text;
     },
     fileInput() {
       if (this.isOptionSelected && this.selectedOption.inputs) {
